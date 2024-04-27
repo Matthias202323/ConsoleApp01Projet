@@ -41,7 +41,7 @@ namespace ConsoleApp01Projet
        
         public static void ShowAllStudents()
         {
-            Console.WriteLine("List of Students:");
+            Console.WriteLine("Liste des Eleves:");
             foreach (var student in Campus.Students)
             {
                 Console.WriteLine($"\n\tEleve:\n " +
@@ -134,7 +134,7 @@ namespace ConsoleApp01Projet
         
         public static void ShowUserData(Eleve student)
         {
-            Console.WriteLine($"\n\tStudent:\n " +
+            Console.WriteLine($"\n\tEleve:\n " +
                 $"\t\tID : {student._id}\n" +
                 $"\t\tPrenom : {student._firstname}\n" +
                 $"\t\tNom : {student._lastname}\n" +
