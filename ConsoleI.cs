@@ -8,15 +8,12 @@ namespace ConsoleApp01Projet
 {
     internal class ConsoleI
     {
-        public Campus campus { get; set; }
+        public static Campus campus { get; set; }
         public ConsoleI()
         {
             campus = new Campus();
         }
-        /// <summary>
-        /// Prompts the user to input a numerical choice.
-        /// </summary>
-        /// <returns>The user input choice as an integer.</returns>
+       
         public static int AskUserOption()
         {
             Console.Write("Choose an option: ");
@@ -31,9 +28,7 @@ namespace ConsoleApp01Projet
         }
 
 
-        /// <summary>
-        /// Output the main menu.
-        /// </summary>
+        
         public static void ShowMainMenu(string title, List<string> options)
         {
             Console.WriteLine($"{title} :");
@@ -43,32 +38,21 @@ namespace ConsoleApp01Projet
         }
 
 
-        /// <summary>
-        /// Output a list of students.
-        /// </summary>
-        /// <param name="students">list of student.</param>
-        public static void ShowAllStudents(Campus campus)
+       
+        public static void ShowAllStudents()
         {
             Console.WriteLine("List of Students:");
-            foreach (var student in campus.Students)
+            foreach (var student in Campus.Students)
             {
-                Console.WriteLine($"\n\tStudent:\n " +
+                Console.WriteLine($"\n\tEleve:\n " +
                     $"\t\tID : {student._id}\n" +
-                    $"\t\tName : {student._firstname} {student._lastname}\n" +
-                    $"\t\tBirthday : {student._birthdate}");
+                    $"\t\tNom : {student._firstname} {student._lastname}\n" +
+                    $"\t\tate de naissance : {student._birthdate}");
             }
         }
 
 
-        /// <summary>
-        /// Asks for student info and returns it as a tuple.
-        /// </summary>
-        /// <returns>
-        /// A tuple containing three strings:
-        /// - firstname: The student's first name.
-        /// - lastname: The student's last name.
-        /// - birthday: The student's birthday in the format "MM/DD/YYYY".
-        /// </returns>
+       
         public static (string? firstname, string? lastname, string? birthday) AskStudentInfo()
         {
             string? firstName = null;
@@ -78,20 +62,20 @@ namespace ConsoleApp01Projet
 
             do
             {
-                Console.WriteLine("\n\nEnter student details: [type exit to cancel]");
-                Console.Write("Firstname: ");
+                Console.WriteLine("\n\nEntrer les details: [type exit to cancel]");
+                Console.Write("Prenom: ");
                 firstName = Console.ReadLine();
 
                 if (firstName == "exit")
                     break;
 
-                Console.Write("Lastname: ");
+                Console.Write("Nom: ");
                 lastName = Console.ReadLine();
                 if (lastName == "exit")
                     break;
 
 
-                Console.Write("Birthday (Format: DD/MM/YYYY): ");
+                Console.Write("Date de naissance (Format: DD/MM/YYYY): ");
                 birthday = Console.ReadLine();
                 if (birthday == "exit")
                     break;
@@ -118,27 +102,24 @@ namespace ConsoleApp01Projet
             return (firstName, lastName, birthday);
         }
 
-        /// <summary>
-        /// Prompts the user to input a numerical choice.
-        /// </summary>
-        /// <returns>The user input choice as an integer.</returns>
-        public static int AskUserID(Campus campus)
+       
+        public static int AskUserID()
         {
-            Console.WriteLine("Student List:");
-            for (int i = 0; i < campus.Students.Count; i++)
+            Console.WriteLine("Liste des eleves:");
+            for (int i = 0; i < Campus.Students.Count; i++)
             {
-                Eleve? student = campus.Students[i];
-                Console.WriteLine($"ID: {student._id}, Name: {student._firstname} {student._lastname}");
+                Eleve? student = Campus.Students[i];
+                Console.WriteLine($"ID: {student._id}, Nom: {student._firstname} {student._lastname}");
             }
 
             int id;
             while (true)
             {
-                Console.Write("Enter student ID: ");
+                Console.Write("Enter eleve ID: ");
                 if (int.TryParse(Console.ReadLine(), out id))
                 {
                     // Check if the entered ID exists
-                    if (!campus.Students.Any(student => student._id == id))
+                    if (!Campus.Students.Any(student => student._id == id))
                         Console.WriteLine("Invalid student ID. Please enter a valid student ID.");
                     else break;
                 }
@@ -150,35 +131,47 @@ namespace ConsoleApp01Projet
             return id;
         }
 
-        /// <summary>
-        /// Output the student data.
-        /// </summary>
-        /// <param name="student">The Student to show.</param>
+        
         public static void ShowUserData(Eleve student)
         {
             Console.WriteLine($"\n\tStudent:\n " +
                 $"\t\tID : {student._id}\n" +
-                $"\t\tFirstname : {student._firstname}\n" +
-                $"\t\tLastname : {student._lastname}\n" +
-                $"\t\tBirthday : {student._birthdate}");
+                $"\t\tPrenom : {student._firstname}\n" +
+                $"\t\tNom : {student._lastname}\n" +
+                $"\t\tDate de naissance : {student._birthdate}");
+            Console.WriteLine();
+            Console.WriteLine("\tTableau des notes:");
 
+            double noteAverage = 0;
+            foreach (var grade in student.ListeTableaux)
+            {
+                string comment = grade.Commentary.Length > 0 ? "Commentaire : " + grade.Commentary : "";
+                var courseName = Campus.Courses.Find(c => c.Id == grade.CourseId)?.Name;
+
+                noteAverage += grade.Note;
+
+                Console.WriteLine($"\t\tCours: {courseName ?? "Unknown"}, \n\t\t\tNote : {grade.Note}/20, \n\t\t\t{comment}");
+
+                Console.WriteLine();
+            }
+
+            noteAverage /= student.ListeTableaux.Count;
+
+            Console.WriteLine($"\t\tMoyenne : {noteAverage}/20");
 
         }
 
-        /// <summary>
-        /// Prompts the user to enter the ID of a course.
-        /// </summary>
-        /// <returns>The ID of the course entered by the user.</returns>
+        
         public static int AskCourseID()
         {
-            Console.WriteLine("Course List:");
+            Console.WriteLine("Lste des cours:");
             foreach (var course in Campus.Courses)
                 Console.WriteLine($"ID: {course.Id}, Name: {course.Name}");
 
             int id;
             while (true)
             {
-                Console.Write("Enter course ID: ");
+                Console.Write("ID cours: ");
                 if (int.TryParse(Console.ReadLine(), out id))
                 {
                     // Check if the entered ID exists
@@ -192,13 +185,10 @@ namespace ConsoleApp01Projet
             return id;
         }
 
-        /// <summary>
-        /// Prompts the user to enter a note out of 20.
-        /// </summary>
-        /// <returns>The note entered by the user, which should be between 0 and 20.</returns>
+        
         public static int AskNote()
         {
-            Console.Write("Enter note (out of 20): ");
+            Console.Write("Note (sur 20): ");
             int note;
             while (!int.TryParse(Console.ReadLine(), out note) || note < 0 || note > 20)
                 Console.Write("Invalid note. Enter note (out of 20): ");
@@ -206,13 +196,10 @@ namespace ConsoleApp01Projet
             return note;
         }
 
-        /// <summary>
-        /// Prompts the user to enter a commentary (optional).
-        /// </summary>
-        /// <returns>The commentary entered by the user.</returns>
+       
         public static string AskCommentary()
         {
-            Console.Write("Enter commentary (optional): ");
+            Console.Write("Entrer commentaire (optional): ");
             return Console.ReadLine();
         }
 
@@ -220,7 +207,7 @@ namespace ConsoleApp01Projet
 
         public static void ShowAllCourses()
         {
-            Console.WriteLine("Course List:");
+            Console.WriteLine("Liste des cours:");
             foreach (var course in Campus.Courses)
             {
                 Console.WriteLine($"ID: {course.Id}, Name: {course.Name}");
@@ -233,8 +220,8 @@ namespace ConsoleApp01Projet
 
             do
             {
-                Console.WriteLine("\n\nEnter course details: [type exit to cancel]");
-                Console.Write("Name: ");
+                Console.WriteLine("\n\nEntrer les details du cours: [type exit to cancel]");
+                Console.Write("Intitule: ");
                 name = Console.ReadLine();
 
                 if (name == "exit")

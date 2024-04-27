@@ -12,11 +12,11 @@ namespace ConsoleApp01Projet
         public string _firstname { get; init; }
         public string _lastname { get; init; }
         public string _birthdate { get; init; }
-        public Dictionary<string, double> _note { get; set; }
+        
         public int _id { get; }
         private static int _nextId = 1;
-
-        private int _coursnumber;
+        public List<Tableau>? ListeTableaux { get; set; }
+       
         
 
 
@@ -29,25 +29,14 @@ namespace ConsoleApp01Projet
             _birthdate = birthday;
             _firstname = firstname;
             _lastname = lastname;
-
-            _coursnumber = 0;
+            ListeTableaux = new List<Tableau>();
+            
 
         }
-        public void SetNote(double note)
+        
+        public void AddGrade(Tableau table)
         {
-
-            /*_notes.Add(note);*/
+            ListeTableaux.Add(table);
         }
-        public void SetCommentaire(string commentaire)
-        {
-            /*_commentaires = commentaire;*/
-        }
-
-        public double CalculeMoyenne()
-        {
-            double result = 0;
-            return result;
-        }
-      
     }
 }

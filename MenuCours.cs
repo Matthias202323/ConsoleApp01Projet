@@ -8,22 +8,77 @@ namespace ConsoleApp01Projet
 {
     internal class MenuCours : Menu
     {
-        protected override string Title => "Course Menu";
+        protected override string Title => "Menu Cours";
+        public Campus Campus1 { get; set; }
+        protected override List<string> MenuOptions => new List<string>() { "Afficher la liste des cours", "Creer un cours", "Supprimer un cours", "Main Menu" };
+        private void ShowAllCourses()
+        {
+            ConsoleI.ShowAllCourses();
+        }
+         public MenuCours(Campus campus)
+        {
+            Campus1 = campus;
+        }
+        private void CreateNewCourse()
+        {
+            string? name = ConsoleI.AskCourseInfo();
 
-        protected override List<string> MenuOptions => new List<string>() { "Show List", "Create", "Delete", "Main Menu" };
+            if (Validation.AnyNullOrEmpty(name))
+            {
+                Logger.Write("[CourseMenu] - Creation of course canceled.");
+                return;
+            }
 
+            Cours course = new Cours(name);
+            Campus.Courses.Add(course);
+
+            Campus.SaveData();
+
+            Logger.Write($"[{Title}] - Created new course");
+        }
+
+        private void DeleteCourse()
+        {
+            int courseId = ConsoleI.AskCourseID();
+            Cours? course = Campus.Courses.FirstOrDefault(c => c.Id == courseId);
+
+            if (course == null)
+            {
+                Logger.Write($"[{Title}] - Course not found.");
+                return;
+            }
+
+            Campus.Courses.Remove(course);
+
+            foreach (var student in Campus.Students)
+            {
+                var gradeToRemove = student.ListeTableaux.FirstOrDefault(g => g.CourseId == courseId);
+
+                if (gradeToRemove != null)
+                {
+                    student.ListeTableaux.Remove(gradeToRemove);
+                }
+            }
+
+            Campus.SaveData();
+
+            Logger.Write($"[{Title}] - Deleted course and associated grades");
+        }
         public override Menu ManageOptions(int option)
         {
             switch (option)
             {
                 case 1:
-                    Logger.Write($"[{Title}] - Show courses list");
+                    ShowAllCourses();
+                    Logger.Write($"[{Title}] - Afficher la liste des cours");
                     return this;
                 case 2:
-                    Logger.Write($"[{Title}] - Create new course");
+                    CreateNewCourse();
+                    Logger.Write($"[{Title}] - Creer un cours");
                     return this;
                 case 3:
-                    Logger.Write($"[{Title}] - Delete new course");
+                    DeleteCourse();
+                    Logger.Write($"[{Title}] - Supprimer un cours");
                     return this;
                 case 4:
                     Logger.Write($"[{Title}] - Back to Main Menu");

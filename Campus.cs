@@ -11,13 +11,14 @@ namespace ConsoleApp01Projet
     {
         private static List<Eleve> _students = new List<Eleve>();
         private static List<Cours> _courses = new List<Cours>();
+        private static List<Tableau> _tableau = new List<Tableau>();
 
 
         public static string FilePath { get; private set; }
 
-        public List<Eleve> Students { get; set; }
-        public static List<Cours> Courses { get { return _courses; } }
-
+        public static List<Eleve> Students { get { return _students; } set { } }
+        public static List<Cours> Courses { get { return _courses; } set { } }
+        public static List<Tableau> Tableau { get { return _tableau; } set { } }
 
         public static bool IsExiting { get; set; } = false;
         public static bool ShouldNotClose() => !IsExiting;
@@ -40,7 +41,7 @@ namespace ConsoleApp01Projet
             {
                 _students = data.Students;
                 _courses = data.Courses;
-
+                _tableau = data.Tableau;
 
                 Logger.Write("Data loaded successfully.");
             }
@@ -56,7 +57,7 @@ namespace ConsoleApp01Projet
             {
                 Students = _students,
                 Courses = _courses,
-
+                Tableau = _tableau
             };
 
             JSON.SaveData(data);
