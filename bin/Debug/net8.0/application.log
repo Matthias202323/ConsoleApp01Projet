@@ -1,0 +1,33 @@
+2024-04-27 09-51-05 Loading data from C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json...
+2024-04-27 09-51-05 Failed to load data from C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json: Could not find file 'C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json'.
+2024-04-27 09-51-05 No data found.
+2024-04-27 09-51-09 [Main Menu] - Select Menu Eleves
+2024-04-27 09-51-13 [Menu Eleve] - Afficher la liste des eleves 
+2024-04-27 09-51-45 Data saved to C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json.
+2024-04-27 09-51-45 Data saved successfully
+2024-04-27 09-51-45 [Menu Eleve] - Created new student
+2024-04-27 09-51-51 [Menu Eleve] - Afficher la liste des eleves 
+2024-04-27 09-52-07 [Menu Eleve] - Back to Main Menu
+2024-04-27 09-52-41 [Main Menu] - Select Exit
+2024-04-27 09-52-41 Application terminated successfully.
+2024-04-27 10-00-16 Loading data from C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json...
+2024-04-27 10-00-16 Data loaded successfully.
+2024-04-27 10-00-16 Data loaded successfully.
+2024-04-27 10-00-19 [Main Menu] - Select Menu Eleves
+2024-04-27 10-00-42 Loading data from C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json...
+2024-04-27 10-00-42 Data loaded successfully.
+2024-04-27 10-00-42 Data loaded successfully.
+2024-04-27 10-00-47 [Main Menu] - Select Menu Cours
+2024-04-27 10-01-02 Data saved to C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json.
+2024-04-27 10-01-02 Data saved successfully
+2024-04-27 10-01-02 [Menu Cours] - Created new course
+2024-04-27 10-01-02 [Menu Cours] - Creer un cours
+2024-04-27 10-01-09 [Menu Cours] - Back to Main Menu
+2024-04-27 10-01-12 [Main Menu] - Select Menu Eleves
+2024-04-27 10-01-41 [Menu Eleve] - Added new grade to student.
+2024-04-27 10-01-41 Data saved to C:\Users\desma\ConsoleApp01Projet\bin\Debug\net8.0\application.json.
+2024-04-27 10-01-41 Data saved successfully
+2024-04-27 10-01-48 [Menu Eleve] - Show student info
+2024-04-27 10-02-04 [Menu Eleve] - Back to Main Menu
+2024-04-27 10-02-07 [Main Menu] - Select Exit
+2024-04-27 10-02-07 Application terminated successfully.

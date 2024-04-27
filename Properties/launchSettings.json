@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConsoleApp01Projet": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\desma\\ConsoleApp01Projet\\bin\\Debug\\net8.0\\application.json"
+    }
+  }
+}

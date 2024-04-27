@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "DQ1i2E7Jm8O+NjeipQ2s2N2kHIby4gj/DJEZqOS/sdC/mXGPTmowCntKIZW22maqTwnKd7QgAh+tbOKd7dqnYg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\desma\\ConsoleApp01Projet\\ConsoleApp01Projet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\desma\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.4\\microsoft.dotnet.ilcompiler.8.0.4.nupkg.sha512",
+    "C:\\Users\\desma\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.4\\microsoft.net.illink.tasks.8.0.4.nupkg.sha512",
+    "C:\\Users\\desma\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\desma\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.4\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
