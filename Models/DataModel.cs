@@ -11,6 +11,6 @@ namespace ConsoleApp01Projet.Models
         public List<Eleve> Students { get; set; }
         public List<Cours> Courses { get; set; }
 
-
+        public List<Tableau> Tableau { get; set; }
     }
 }
