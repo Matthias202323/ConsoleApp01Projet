@@ -41,7 +41,9 @@ namespace ConsoleApp01Projet
        
         public static void ShowAllStudents()
         {
+
             Console.WriteLine("========Liste des Eleves:========");
+
             foreach (var student in Campus.Students)
             {
                 Console.WriteLine($"\n\tEleve:\n " +
