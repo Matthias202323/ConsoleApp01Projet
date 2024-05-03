@@ -41,13 +41,14 @@ namespace ConsoleApp01Projet
        
         public static void ShowAllStudents()
         {
-            Console.WriteLine("List of Students:");
+            Console.WriteLine("========Liste des Eleves:========");
             foreach (var student in Campus.Students)
             {
                 Console.WriteLine($"\n\tEleve:\n " +
                     $"\t\tID : {student._id}\n" +
                     $"\t\tNom : {student._firstname} {student._lastname}\n" +
-                    $"\t\tate de naissance : {student._birthdate}");
+                    $"\t\tDate de naissance : {student._birthdate}");
+                Console.WriteLine();
             }
         }
 
@@ -134,23 +135,23 @@ namespace ConsoleApp01Projet
         
         public static void ShowUserData(Eleve student)
         {
-            Console.WriteLine($"\n\tStudent:\n " +
+            Console.WriteLine($"\n\tEleve:\n " +
                 $"\t\tID : {student._id}\n" +
                 $"\t\tPrenom : {student._firstname}\n" +
                 $"\t\tNom : {student._lastname}\n" +
                 $"\t\tDate de naissance : {student._birthdate}");
             Console.WriteLine();
-            Console.WriteLine("\tTableau des notes:");
+            Console.WriteLine("\tRésultats scolaires:");
 
             double noteAverage = 0;
-            foreach (var grade in student.ListeTableaux)
+            foreach (var tableau in student.ListeTableaux)
             {
-                string comment = grade.Commentary.Length > 0 ? "Commentaire : " + grade.Commentary : "";
-                var courseName = Campus.Courses.Find(c => c.Id == grade.CourseId)?.Name;
+                string comment = tableau.Commentary.Length > 0 ? "Appréciation : " + tableau.Commentary : "";
+                var courseName = Campus.Courses.Find(c => c.Id == tableau.CourseId)?.Name;
 
-                noteAverage += grade.Note;
+                noteAverage += tableau.Note;
 
-                Console.WriteLine($"\t\tCours: {courseName ?? "Unknown"}, \n\t\t\tNote : {grade.Note}/20, \n\t\t\t{comment}");
+                Console.WriteLine($"\t\tCours: {courseName ?? "Unknown"}, \n\t\t\tNote : {tableau.Note}/20, \n\t\t\t{comment}");
 
                 Console.WriteLine();
             }
@@ -158,7 +159,7 @@ namespace ConsoleApp01Projet
             noteAverage /= student.ListeTableaux.Count;
 
             Console.WriteLine($"\t\tMoyenne : {noteAverage}/20");
-
+            Console.WriteLine() ;
         }
 
         
@@ -199,7 +200,7 @@ namespace ConsoleApp01Projet
        
         public static string AskCommentary()
         {
-            Console.Write("Entrer commentaire (optional): ");
+            Console.Write("Entrer appréciation (optional): ");
             return Console.ReadLine();
         }
 
@@ -207,10 +208,10 @@ namespace ConsoleApp01Projet
 
         public static void ShowAllCourses()
         {
-            Console.WriteLine("Liste des cours:");
+            Console.WriteLine("=========Liste des cours:===========");
             foreach (var course in Campus.Courses)
             {
-                Console.WriteLine($"ID: {course.Id}, Name: {course.Name}");
+                Console.WriteLine($"ID: {course.Id}, Intitulé: {course.Name}");
             }
         }
 

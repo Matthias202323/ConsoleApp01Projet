@@ -8,7 +8,7 @@ namespace ConsoleApp01Projet
 {
     internal class Menu1 : Menu
     {
-        protected override string Title => "Main Menu";
+        protected override string Title => "=========Main Menu==========";
         public Campus Campus { get; set; }
         protected override List<string> MenuOptions => new List<string>() { "Menu Eleves", "Menu Cours", "Exit" };
         public Menu1() {

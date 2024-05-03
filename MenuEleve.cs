@@ -9,7 +9,7 @@ namespace ConsoleApp01Projet
 {
     public class MenuEleve : Menu
     {
-        protected override string Title => "Menu Eleve";
+        protected override string Title => "=========Menu Eleve=========";
         protected override List<string> MenuOptions => new List<string>() { "Afficher la liste des Eleves", "Creer un eleve", "Informations Eleve", "Ajouter une note", "Main Menu" };
         public Campus Campus1 { get; set; }
         public MenuEleve(Campus campus)
@@ -87,14 +87,14 @@ namespace ConsoleApp01Projet
                 existing.Note = note;
                 existing.Commentary = commentary;
 
-                Logger.Write($"[{Title}] - Updated existing grade for the course.");
+                Logger.Write($"[{Title}] - Updated existing table for the course.");
             }
             else
             {
                 Tableau newGrade = new Tableau(courseId, note, commentary);
                 student.AddGrade(newGrade);
 
-                Logger.Write($"[{Title}] - Added new grade to student.");
+                Logger.Write($"[{Title}] - Added new table to student.");
             }
 
             Campus.SaveData();
